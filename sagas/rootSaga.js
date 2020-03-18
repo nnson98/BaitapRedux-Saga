@@ -1,6 +1,6 @@
 import {call, all} from 'redux-saga/effects';
-import {wacthFetchMovies} from './userSagas';
+import {watchFetchUser} from './userSagas';
 
-export default function* rootSaga() {
-  yield call(wacthFetchMovies);
+export default function* rootSaGa() {
+  yield call(watchFetchUser);
 }

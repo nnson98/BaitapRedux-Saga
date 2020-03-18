@@ -9,11 +9,11 @@ function* getUsersFromApi() {
     },
     body: '',
   });
-  const user = yield reponse.status === 100
+  const users = yield reponse.status === 20
     ? JSON.parse(reponse._bodyInit)
     : [];
-  return user;
+  return users;
 }
-export const Api = {
+export const API = {
   getUsersFromApi,
 };

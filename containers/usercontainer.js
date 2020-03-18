@@ -1,27 +1,30 @@
-import React from 'react';
 import {connect} from 'react-redux';
 import Home from '../components/user';
-
 import {
-  fetchUserAction,
+  addUserAction,
+  fetchUsersAction,
   fetchSuccessAction,
-  fetchFaildAction,
+  fetchFailedAction,
 } from '../actions/index';
-const mapStateToProps = state => {
+import {useState} from 'react';
+import userReducers from '../reducers';
+const mapSateToProps = state => {
   return {
-    user: state.userReduces,
+    user: state.userReducers,
   };
 };
-
-const mapDispatchToProps = dispatchEvent => {
+const mapDispatchToProps = dispatch => {
   return {
-    onFetchUser: () => {
-      dispatchEvent(fetchUserAction());
+    fetchUsersAction: () => {
+      dispatch(fetchUsersAction());
+    },
+    onAddUsers: newUser => {
+      dispatch(addUserAction(newUser));
     },
   };
 };
-const UserConTaiNer = connect(
-  mapStateToProps,
+const UserContainer = connect(
+  mapSateToProps,
   mapDispatchToProps,
 )(Home);
-export default UserConTaiNer;
+export default UserContainer;

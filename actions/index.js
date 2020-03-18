@@ -1,9 +1,19 @@
-import {FETCH_USER, FETCH_SUCCEEDED, FETCH_FAILD} from './actionTypes';
-
-export const fetchUserAction = sort => {
+import {
+  ADD_USER,
+  FETCH_USERS,
+  FETCH_SUCCEEDED,
+  FETCH_FAILED,
+} from './actionType';
+export const fetchUsersAction = sort => {
   return {
-    type: FETCH_USER,
+    type: FETCH_USERS,
     sort,
+  };
+};
+export const addUserAction = newUser => {
+  return {
+    type: ADD_USER,
+    newUser,
   };
 };
 export const fetchSuccessAction = receivedUsers => {
@@ -12,9 +22,9 @@ export const fetchSuccessAction = receivedUsers => {
     receivedUsers,
   };
 };
-export const fetchFaildAction = error => {
+export const fetchFailedAction = error => {
   return {
-    type: FETCH_SUCCEEDED,
+    type: FETCH_FAILED,
     error,
   };
 };
