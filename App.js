@@ -1,21 +1,18 @@
 import React from 'react';
-
-import {createStore, applyMiddleware} from 'redux';
-import {Provider} from 'react-redux';
-import allReduces from './reducers/index';
-import UserContainer from './components/user';
-
+import {applyMiddleware, createStore} from 'redux';
+import rootReducer from './sagas/reducer';
 import createSagaMiddleware from 'redux-saga';
-import rootSaga from './sagas/rootSaga';
+import {Provider} from 'react-redux';
+import Home from './screens/UserScreen';
+import rootSaga from './sagas/userSagas';
 
 const sagaMiddleware = createSagaMiddleware();
-let store = createStore(allReduces, applyMiddleware(sagaMiddleware));
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 export default function App() {
   return (
     <Provider store={store}>
-      <UserContainer />
+      <Home />
     </Provider>
   );
 }
-
 sagaMiddleware.run(rootSaga);
