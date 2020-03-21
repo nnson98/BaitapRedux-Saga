@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, FlatList, View, TouchableOpacity, Text} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {getUserRequest} from './UserActions';
@@ -18,13 +18,13 @@ export default function Home() {
             </View>
           </TouchableOpacity>
           <FlatList
-            data={user.data.user}
+            data={user.data}
             renderItem={({item}) => (
               <View>
-                <Text>{item.data.name}</Text>
+                <Text>{item.email}</Text>
               </View>
             )}
-            keyExtractor={item => item.data.name}
+            keyExtractor={item => item.email}
           />
         </View>
       ) : (

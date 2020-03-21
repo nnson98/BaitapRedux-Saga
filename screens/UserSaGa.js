@@ -9,7 +9,7 @@ export function* watchGetUser() {
 
 function* handleGetUser(action) {
   const response = yield call(getUser, action.payload);
-  if (response.ok) {
+  if (response !== []) {
     yield put(getUserSuccess(response.data));
   } else {
     if (
